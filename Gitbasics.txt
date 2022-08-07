@@ -1,0 +1,136 @@
+master -------A(a.txt, b.txt, c.txt)------------------------------------> PRODUCTION (Deploying)
+develop -------A(a.txt, b.txt, c.txt)------------------------------------> Developers -> Used fot everything(Testing, developing, deploying)
+Cloned branches :-
+	with user.name? && user.email?
+		-> Siman Naidu & saiman.naidu@gmail.com and branch name :- siman_branch
+		-> Preethi & preethi@gmail.com and branch name :- preethi_branch
+
+
+Local Branch -> git clone master url
+-----------------------------------------
+A(a.txt, b.txt, c.txt) -> Siman -> user.name? && user.email?
+A(a.txt, b.txt, c.txt) -> Adarsh
+A(a.txt, b.txt, c.txt) -> Preeti
+
+master(Remote) -------A(a.txt, b.txt, c.txt)v1-----B(a.txt, b.txt, c.txt)v2------------------------------->
+
+Commands :- git pull && git add . && git commit && git push
+
+A(a.txt, b.txt, c.txt) -> Siman(Local) -> a.txt -> 2 lines -> git push -> B(a.txt, b.txt, c.txt)
+A(a.txt, b.txt, c.txt) -> Adarsh(Local) -> git pull -> B(a.txt, b.txt, c.txt)
+A(a.txt, b.txt, c.txt) -> Preeti(Local)  -> 	git pull -> B(a.txt, b.txt, c.txt)
+
+master(Remote) -------A(a.txt, b.txt, c.txt)-----B(a.txt, b.txt, c.txt)-----------C(a.txt, b.txt, c.txt)v3-------------------->
+
+B(a.txt, b.txt, c.txt) -> Siman(Local) -> git pull -> C(a.txt, b.txt, c.txt)
+B(a.txt, b.txt, c.txt) -> Adarsh(Local) ->  c.txt -> 5 lines -> git push -> C(a.txt, b.txt, c.txt)
+B(a.txt, b.txt, c.txt) -> Preeti(Local)  -> 	git pull -> C(a.txt, b.txt, c.txt)
+
+master(Remote) -------A(a.txt, b.txt, c.txt)-----B(a.txt, b.txt, c.txt)-----C(a.txt, b.txt, c.txt)-----D(a.txt, b.txt, c.txt)------------>
+
+C(a.txt, b.txt, c.txt) -> Siman(Local) -> git pull -> D(a.txt, b.txt, c.txt)
+C(a.txt, b.txt, c.txt) -> Adarsh(Local) ->   git pull -> D(a.txt, b.txt, c.txt)
+C(a.txt, b.txt, c.txt) -> Preeti(Local)  -> b.txt -> 10 lines -> git push -> D(a.txt, b.txt, c.txt)
+
+
+A(a.txt, b.txt, c.txt) -> Master
+B(a.txt, b.txt, c.txt) -> Master + Siman
+C(a.txt, b.txt, c.txt)-> Master + Siman + Adarsh
+D(a.txt, b.txt, c.txt)-> Master + Siman + Adarsh + Preeti
+
+
+Verify this :-
+---------------
+ git config --get user.email
+ git config --get user.name
+ git config --list
+ git config --global core.editor code
+
+
+ git config --global user.name “Siman Naidu”
+ git config --global user.email saiman.naidu@gmail.com
+
+
+develop -------A(a.txt, b.txt, c.txt)------------------------------------>
+
+
+1. To clone an already existing repo
+----------------------------------------
+git clone develop_url
+
+local_develop	-------A(a.txt, b.txt, c.txt)------------------------------------>
+	Working-directory ->
+		added new file -> d.txt
+		modified existing file -> a.txt
+		git status
+			-> untracked files -> d.txt -> red
+			-> modified files -> a.txt -> red
+	1. git add <file-names>
+		Staging Area -> git add <file-names> or git add .
+			git add d.txt, a.txt
+			git status
+			->  new file: d.txt  -> green
+			->  modified:a.txt -> green
+	2. git commit -m "My First Commit"
+		(Local Repo)		local_develop	-------A(a.txt, b.txt, c.txt, d.txt)------------------------------------>
+		(Remote Repo) 			 develop -------A(a.txt, b.txt, c.txt)------------------------------------>
+	3. git push
+		(Local Repo)		local_develop	-------A(a.txt, b.txt, c.txt, d.txt)------------------------------------>
+		(Remote Repo) 			 develop  -------A(a.txt, b.txt, c.txt, d.txt)------------------------------------>
+
+	git clone https://github.com/raghavendramj/NS_Github_Prac.git
+
+
+2. Create a local repository and then link it with remote repository.
+	---------------------------------------------------------------------
+	1. create a folder ex:- mkdir ns_local_repo
+	2. Go inside ex:- cd  ns_local_repo
+	3. git init -> convert the folder to repository
+	4. add some files,
+		-> code first.txt -> my first file -> save
+		-> code second.txt -> my second file -> save
+	5. git status
+		Untracked files:
+			first.txt
+			second.txt
+	6. git add first.txt second.txt
+	7. git status
+		Changes to be committed:
+		  (use "git rm --cached <file>..." to unstage)
+				new file:   first.txt
+				new file:   second.txt
+	8. git commit -m "This is my first local commit"
+	9. git push -> FAILED -> fatal: No configured push destination.
+	10. Goto https://github.com/raghavendramj/ and create a repository. -> https://github.com/raghavendramj/NS_RemoteAndLocalLink.git
+	11. Set the remote
+			Command :- git remote add origin https://github.com/raghavendramj/NS_RemoteAndLocalLink.git
+	12. git push --set-upstream origin master
+
+
+
+
+
+
+Branching Techniques:-
+---------------------------
+1. Create a local branch :- 
+		git branch <branch_name>
+		git branch dummy
+
+2. Switch between Branches
+		git checkout <branch_name>
+		
+		
+		git checkout dummy 
+		git remote add origin master
+				OR
+		git checkout -b second (Set the remote branch automatically)
+		
+3. git add secondFiles.txt
+	git commit -m "Commited from this branch-second"
+	git push --set-upstream origin second
+
+4. git checkout master
+	
+5. Merge changes from local branches
+	git merge second
