@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>JS Introduction</title>
+    <script>
+      function addContent() {
+        console.log("Button clicked!");
+        var para = document.getElementById("content");
+        para.innerHTML = "Welcome to javascript!";
+        para.style.color = "red";
+        para.style.fontSize = "30px";
+
+        var elements = document.getElementsByClassName("commonEle");
+        for (var eachElement of elements) {
+          console.log(eachElement);
+          eachElement.style.color = "blue";
+          eachElement.style.fontSize = "20px";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to JS</h1>
+    <div>
+      <button onclick="addContent()">Click to add Content Below</button>
+      <!--   
+      1. By Id
+      2. By Class
+      3. TagName or element
+     -->
+
+      <p id="content"></p>
+      <p class="commonEle">This Para!</p>
+      <div class="commonEle">This Div!</div>
+      <span class="commonEle">This Span!</span>
+    </div>
+  </body>
+</html>

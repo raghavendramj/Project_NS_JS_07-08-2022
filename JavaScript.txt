@@ -1,0 +1,17 @@
+JavaScript
+--------------	
+Basics of javascript
+JavaScript Arrays, Objects and Functions
+IIFE
+Scope
+Closure
+Hoisting
+JS Methods 
+Introduction to DOM
+
+ES6
+Callbacks 
+Callback Hell
+Promises
+JSON
+AJAX
