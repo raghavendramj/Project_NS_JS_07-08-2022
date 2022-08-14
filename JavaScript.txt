@@ -1,6 +1,6 @@
 JavaScript
 --------------	
-Basics of javascript
+Basics of JavaScript
 JavaScript Arrays, Objects and Functions
 IIFE
 Scope
